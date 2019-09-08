@@ -370,9 +370,11 @@ body {
 
 .fonts-radio_block {
   position: relative;
-  width: 50%; }
+  width: 50%;
+  display: inline-block; }
   .fonts-radio_block__wide {
-    width: 40%; }
+    width: 40%;
+    float: left; }
     .fonts-radio_block__wide .fonts-radio_label {
       width: 200px;
       height: 200px; }
@@ -406,7 +408,7 @@ body {
 
 .fonts-radio_name {
   padding-left: 40px;
-  font-size: 40px;
+  font-size: 25px;
   position: relative;
   color: #24272c; }
   .fonts-radio_name:before {
