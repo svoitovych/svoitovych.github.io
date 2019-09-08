@@ -370,16 +370,12 @@ body {
   .tab.is-active {
     display: block; }
 
-.fonts-radio_block {
-  position: relative;
-  width: 50%;
-  display: inline-block; }
-  .fonts-radio_block__wide {
-    width: 40%;
-    float: left; }
-    .fonts-radio_block__wide .fonts-radio_label {
-      width: 200px;
-      height: 200px; }
+.fonts-radio_block__wide {
+  width: 40%;
+  float: left; }
+  .fonts-radio_block__wide .fonts-radio_label {
+    width: 200px;
+    height: 200px; }
 
 .fonts-radio_label {
   width: 150px;
