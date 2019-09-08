@@ -424,7 +424,9 @@ body {
 
 .fonts-radio_input:checked, .fonts-radio_input:not(:checked) {
   position: absolute;
-  left: -9999px; }
+  left: 20px;
+  top: 20px;
+  display: none; }
 
 .fonts-radio_input:checked + label .fonts-radio_label {
   border-color: #7f7f7f; }
