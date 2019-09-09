@@ -1,5 +1,5 @@
 let tab = function () {
-  let tabNav = document.querySelectorAll('.tabs-nav__item'),
+  let tabNav = document.querySelectorAll('.tabs-nav-item'),
     tabContent = document.querySelectorAll('.tab'),
     tabName;
 
