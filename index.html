@@ -1,85 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/normalize.min.css" rel="stylesheet">
-  <link href="css/main.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
-  <div class="wrapper">
-    <div class="tabs-wrapper">
-      <div class="tabs">
-        <div class="tabs__nav tabs-nav">
-          <h2 class="tabs__nav__descr">Please select one font</h2>
-          <div class="tabs__nav__wrap">
-            <div class="tabs__nav__item tabs-nav-item is-active" data-tab-name="tab-1">my fonts</div>
-            <div class="tabs__nav__item tabs-nav-item" data-tab-name="tab-2">buy fonts</div>
-          </div>
-        </div>
-        <div class="tabs__content">
-          <div class="tab is-active tab-1">my fonts tab</div>
-          <div class="tab tab-2">
-            <form action="URL">
-              <div class="fonts-radio-wrap">
-                <div class="fonts-radio__block fonts-radio__block_wide fonts-radio__block_green">
-                  <input type="radio" class="fonts-radio__input" id="radio1" name="fonts-radio"/>
-                  <label for="radio1">
-                    <div class="fonts-radio__wrap">
-                      <div class="fonts-radio__label">
-                        <div class="fonts-radio__inner">
-                          <span>M</span>
-                        </div>
-                      </div>
-                      <div class="fonts-radio__name">
-                        <span>Merriweather project is led by Sorkin Type</span>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-                <div class="fonts-radio__block fonts-radio__block_pink">
-                  <input type="radio" class="fonts-radio__input" id="radio2" name="fonts-radio"/>
-                  <label for="radio2">
-                    <div class="fonts-radio__wrap">
-                      <div class="fonts-radio__label">
-                        <div class="fonts-radio__inner">
-                          <span>R</span>
-                        </div>
-                      </div>
-                      <div class="fonts-radio__name ">
-                        <span>Roboto doesn't compromise, allowing letters</span>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-                <div class="fonts-radio__block  fonts-radio__block_blue">
-                  <input type="radio" class="fonts-radio__input" id="radio3" name="fonts-radio"/>
-                  <label for="radio3">
-                    <div class="fonts-radio__wrap">
-                      <div class="fonts-radio__label">
-                        <div class="fonts-radio__inner">
-                          <span>NS</span>
-                        </div>
-                      </div>
-                      <div class="fonts-radio__name">
-                        <span>Noto Sans covers over 30 scripts</span>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+  <div id="app">
+    <button
+      v-for="(company, index) in companyData"
+      v-bind:key="index"
+      v-bind:class="['tab-button', { active: currentTab === index }]"
+      v-on:click="buttonClick(index)"
+    >{{ company.city }}</button>
+
+    <company-info
+      v-bind:index="currentTab"
+    ></company-info>
+
+    <form @submit.prevent="submitForm">
+      <div>
+        <label for="name">Name:</label><br>
+        <input id="name" type="text" v-model="name" required/>
+      </div>
+      <div>
+        <label for="phone">HOW DO I TURN OFF CAPS LOCK:</label><br>
+        <textarea id="phone" v-model="phone" required></textarea>
+      </div>
+      <div>
+        <label for="email">Email:</label><br>
+        <input id="email" type="email" v-model="email" required/>
+      </div>
+      <button v-bind:class="['tab-button', { disable: buttonDisable }]" type="submit">Submit</button>
+    </form>
   </div>
 
-
-  <script src="js/script.js"></script>
+  <div id="map"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFjxgMUsP328F4_bpqf8ybToV-wCYl7k0&callback=initMap"
+    async defer></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
