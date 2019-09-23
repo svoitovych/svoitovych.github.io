@@ -69,7 +69,7 @@ let app = new Vue({
     responseStatus: null
   },
   methods: {
-    buttonClick: function (index) {
+    buttonClick(index) {
       this.currentTab = index;
       initMap();
     },
