@@ -1,6 +1,6 @@
 const cityInput = document.querySelector('#city-name');
 const weatherButton = document.querySelector('.btn-weather');
-const apiLink = 'http://api.openweathermap.org/data/2.5/weather';
+const apiLink = 'https://api.openweathermap.org/data/2.5/weather';
 const apiKey = 'f4cb0a454cc412cc398b1d00e17a7fc7';
 const outputCity = document.querySelector('.output-city span');
 const outputWeather = document.querySelector('.output-weather span');
