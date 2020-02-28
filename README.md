@@ -1,1 +1,0 @@
-# svoitovych.github.io
