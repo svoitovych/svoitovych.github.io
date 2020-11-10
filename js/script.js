@@ -1,36 +1,26 @@
-const cityInput = document.querySelector('#city-name');
-const weatherButton = document.querySelector('.btn-weather');
-const apiLink = 'https://api.openweathermap.org/data/2.5/weather';
-const apiKey = 'f4cb0a454cc412cc398b1d00e17a7fc7';
-const outputCity = document.querySelector('.output-city span');
-const outputWeather = document.querySelector('.output-weather span');
-const outputTemp = document.querySelector('.output-temperature span');
-const loader = document.querySelector('.load span');
+let tab = function () {
+  let tabNav = document.querySelectorAll('.tabs-nav-item'),
+    tabContent = document.querySelectorAll('.tab'),
+    tabName;
 
-weatherButton.addEventListener('click', () => {
-    const cityValue = cityInput.value;
+  tabNav.forEach(item => {
+    item.addEventListener('click', selectTabNav);
+  });
 
-   if (cityValue == '') {
-       alert("input the city name");
-   } else {
-       const fetchUrl = apiLink + '?q=' + cityValue + '&appid=' + apiKey;
+  function selectTabNav() {
+    tabNav.forEach(item => {
+      item.classList.remove('is-active');
+    });
+    this.classList.add('is-active');
+    tabName = this.getAttribute('data-tab-name');
+    selectTabContent(tabName);
+  }
 
-       loader.removeAttribute('hidden');
+  function selectTabContent(tabName) {
+    tabContent.forEach(item => {
+      item.classList.contains(tabName) ? item.classList.add('is-active') : item.classList.remove('is-active');
+    })
+  }
+};
 
-       fetch(fetchUrl)
-           .then(data => data.json())
-           .then(data => {
-               if (data.cod == 404) {
-                   alert('Something went wrong!!!');
-               } else {
-                   outputCity.innerText = data.name;
-                   outputWeather.innerHTML = data.weather[0].description;
-                   outputTemp.innerHTML = ((data.main.temp - 273.15) > 0 ? "+" : "") + Math.round(data.main.temp - 273.15);
-               };
-           })
-           .catch(error => alert('Something went wrong!!!'))
-           .finally(() => {
-               loader.setAttribute('hidden', 'hidden');
-           })
-   }
-});
+tab();
